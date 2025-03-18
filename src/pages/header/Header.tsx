@@ -9,7 +9,7 @@ export const Header: FunctionComponent = () => {
   return (
     <header className='header'>
       <p>App</p>
-      <Button onClick={toggleTheme} text='🌞/🌑' />
+      <Button onClick={toggleTheme} text='🌞/🌛' />
     </header>
   );
 };
