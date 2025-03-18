@@ -1,12 +1,23 @@
-// import { useState } from 'react'
-import './App.css'
+import { Header, Main, Footer } from '@pages/index';
+import { ThemeProvider, useTheme } from '@/context/ThemeContext';
+import './App.css';
 
 export const App = () => {
-  // const [count, setCount] = useState(0)
+  return (
+    <ThemeProvider>
+      <AppContent />
+    </ThemeProvider>
+  );
+};
+
+const AppContent = () => {
+  const { theme } = useTheme();
 
   return (
-    <>
-      <p>App</p>
-    </>
-  )
-}
+    <div className={theme}>
+      <Header />
+      <Main />
+      <Footer />
+    </div>
+  );
+};

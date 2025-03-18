@@ -12,6 +12,17 @@
 + (optional) за гарні стилі вам плюсик у карму
 + (optional) GitHub репо і ПР-и - зможемо вам поглянути і прокоментувати, якщо вам це цікаво)
 
+## Scripts
++ dev: Starts the development server using Vite.
++ build: Compiles TypeScript and builds the application using Vite.
++ _lint: Runs ESLint on the ./src/ directory with custom configuration.
++ lint: Runs ESLint on the ./src/ directory.
++ lint:fix: Runs ESLint with the --fix flag on the ./src/ directory.
++ preview: Previews the production build locally using Vite.
++ format: Formats the codebase using Prettier.
++ format:fix: Formats the codebase and additional files using Prettier.
++ precommit: Runs format and lint scripts before committing changes.
+
 -------------------------------------------------------------------
 
 ## React + TypeScript + Vite

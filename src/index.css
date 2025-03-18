@@ -1,1 +1,6 @@
 @import url('./styles/normalize.css');
+
+:root{
+    --bg-color: #bebebe;
+    --bg-dark: #5c5c5c;
+}
