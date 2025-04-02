@@ -13,6 +13,7 @@
     "format": "prettier --write \"src/**/*.{js,jsx,ts,tsx,json,css,md}\"",
     "format:fix": "prettier --write './**/*.{js,jsx,ts,tsx,css,scss,md,json}' --config ./.prettierrc",
     "precommit": "npm run format && npm run lint",
+    "prepush": "npm run test -- --watch=false",
     "prepare": "husky",
     "test": "vitest",
     "coverage": "vitest run --coverage"
@@ -42,8 +43,8 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm run pre-commit",
-      "pre-push": "npm run pre-push"
+      "pre-commit": "npm run precommit",
+      "pre-push": "npm run prepush"
     }
   }
 }
