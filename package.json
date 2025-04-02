@@ -6,7 +6,7 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "_lint": "eslint --config ./.eslintrc.cjs --ext js --ext jsx --ext tsx --ext ts ./src/",
+    "_lint": "eslint --config ./eslint.config.mjs --ext js --ext jsx --ext tsx --ext ts ./src/",
     "lint": "npm run _lint -- ./src/",
     "lint:fix": "npm run _lint -- --fix ./src/",
     "preview": "vite preview",
@@ -14,12 +14,10 @@
     "format:fix": "prettier --write './**/*.{js,jsx,ts,tsx,css,scss,md,json}' --config ./.prettierrc",
     "precommit": "npm run format && npm run lint",
     "prepush": "npm run test -- --watch=false",
-    "prepare": "husky",
     "test": "vitest",
     "coverage": "vitest run --coverage"
   },
   "dependencies": {
-    "husky": "^9.1.7",
     "next": "15.2.4",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
@@ -38,13 +36,8 @@
     "eslint": "^9",
     "eslint-config-next": "15.2.4",
     "jsdom": "^26.0.0",
+    "prettier": "^3.5.3",
     "typescript": "^5",
     "vitest": "^3.1.1"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "npm run precommit",
-      "pre-push": "npm run prepush"
-    }
   }
 }
