@@ -20,16 +20,18 @@
       ],
       "paths": {
         "@/*": ["./src/*"],
-        "@/api/*": ["./src/shared/api/*"],
-        "@/context/*": ["./src/shared/context/*"],
-        "@/components/*": ["./src/shared/components/*"],
-        "@/hooks/*": ["./src/shared/hooks/*"],
-        "@/tests/*": ["./src/tests/*"],
-        "@/types/*": ["./src/shared/types/*"],
-        "@/utils/*": ["./src/shared/utils/*"],
+        "@/api": ["./src/shared/api"],
+        "@/context": ["./src/shared/context"],
+        "@/components": ["./src/components"],
+        "@/hooks": ["./src/shared/hooks"],
+        "@/tests": ["./src/tests"],
+        "@/types": ["./src/shared/types"],
+        "@/utils": ["./src/shared/utils"],
       },
       "allowImportingTsExtensions": true,
     },
     "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
-    "exclude": ["node_modules"]
+    "exclude": ["node_modules"],
+    "typeRoots": ["./node_modules/@types", "./src/types"],
+    "types": ["node"]
   }

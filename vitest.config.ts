@@ -9,7 +9,7 @@ export default defineConfig({
       "@": path.resolve(__dirname, "./src"),
       "@/api": path.resolve(__dirname, "./src/shared/api"),
       "@/context": path.resolve(__dirname, "./src/shared/context"),
-      "@/components": path.resolve(__dirname, "./src/shared/components"),
+      "@/components": path.resolve(__dirname, "./src/components"),
       "@/hooks": path.resolve(__dirname, "./src/shared/hooks"),
       "@/tests": path.resolve(__dirname, "./src/tests"),
       "@/types": path.resolve(__dirname, "./src/shared/types"),

@@ -1,0 +1,82 @@
+// Base font size (numeric value without 'px')
+$base-font-size: 16;
+
+// Function to convert px to rem
+@function rem($px) {
+  @return #{$px / $base-font-size}rem;
+}
+
+$font-family: Roboto, sans-serif;
+
+// Typography Map
+$typography: (
+  heading-1: (font-weight: 600, font-size: rem(72), line-height: rem(80)),
+  heading-2: (font-weight: 500, font-size: rem(48), line-height: rem(54)),
+  heading-3: (font-weight: 600, font-size: rem(40), line-height: rem(48)),
+  heading-4: (font-weight: 600, font-size: rem(36), line-height: rem(44)),
+  heading-5: (font-weight: 600, font-size: rem(32), line-height: rem(40)),
+  subheading-1-semibold: (font-weight: 600, font-size: rem(28), line-height: rem(34)),
+  subheading-1-medium: (font-weight: 500, font-size: rem(28), line-height: rem(34)),
+  subheading-2-bold: (font-weight: 700, font-size: rem(24), line-height: rem(30)),
+  subheading-2-semibold: (font-weight: 600, font-size: rem(24), line-height: rem(30)),
+  subheading-2-medium: (font-weight: 500, font-size: rem(24), line-height: rem(30)),
+  subheading-2-small-semibold: (font-weight: 600, font-size: rem(20), line-height: rem(28)),
+  body-1-semibold: (font-weight: 600, font-size: rem(20), line-height: rem(28)),
+  body-1-medium: (font-weight: 500, font-size: rem(20), line-height: rem(28)),
+  body-1-regular: (font-weight: 400, font-size: rem(20), line-height: rem(28)),
+  body-2-semibold: (font-weight: 600, font-size: rem(18), line-height: rem(26)),
+  body-2-medium: (font-weight: 500, font-size: rem(18), line-height: rem(26)),
+  body-2-regular: (font-weight: 400, font-size: rem(18), line-height: rem(26)),
+  body-3-semibold: (font-weight: 600, font-size: rem(16), line-height: rem(24)),
+  body-3-medium: (font-weight: 500, font-size: rem(16), line-height: rem(24)),
+  body-3-regular: (font-weight: 400, font-size: rem(16), line-height: rem(24)),
+  caption-1-semibold: (font-weight: 600, font-size: rem(14), line-height: rem(20)),
+  caption-1-medium: (font-weight: 500, font-size: rem(14), line-height: rem(20)),
+  caption-1-regular: (font-weight: 400, font-size: rem(14), line-height: rem(20))
+);
+
+// Mixin for applying typography styles
+@mixin apply-type($key) {
+  $style: map-get($typography, $key);
+
+  font-family: $font-family;
+  font-weight: map-get($style, font-weight);
+  font-size: map-get($style, font-size);
+  line-height: map-get($style, line-height);
+  letter-spacing: 0;
+}
+
+// Heading styles
+h1 { @include apply-type(heading-1); }
+h2 { @include apply-type(heading-2); }
+h3 { @include apply-type(heading-3); }
+h4 { @include apply-type(heading-4); }
+h5 { @include apply-type(heading-5); }
+
+// Subheading styles
+.subheading-1-semibold { @include apply-type(subheading-1-semibold); }
+.subheading-1-medium   { @include apply-type(subheading-1-medium); }
+.subheading-2-bold     { @include apply-type(subheading-2-bold); }
+.subheading-2-semibold { @include apply-type(subheading-2-semibold); }
+.subheading-2-medium   { @include apply-type(subheading-2-medium); }
+.subheading-2-small-semibold { @include apply-type(subheading-2-small-semibold); }
+
+// Body text styles
+.body-1-semibold { @include apply-type(body-1-semibold); }
+.body-1-medium   { @include apply-type(body-1-medium); }
+.body-1-regular  { @include apply-type(body-1-regular); }
+.body-2-semibold { @include apply-type(body-2-semibold); }
+.body-2-medium   { @include apply-type(body-2-medium); }
+.body-2-regular  { @include apply-type(body-2-regular); }
+.body-3-semibold { @include apply-type(body-3-semibold); }
+.body-3-medium   { @include apply-type(body-3-medium); }
+.body-3-regular  { @include apply-type(body-3-regular); }
+
+// Caption text styles
+.caption-1-semibold { @include apply-type(caption-1-semibold); }
+.caption-1-medium   { @include apply-type(caption-1-medium); }
+.caption-1-regular  { @include apply-type(caption-1-regular); }
+
+body {
+  font-family: Roboto, sans-serif;
+}

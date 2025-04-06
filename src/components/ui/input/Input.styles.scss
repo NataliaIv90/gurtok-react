@@ -1,0 +1,14 @@
+.wrapper {
+    width: 100%;
+}
+
+.label {
+    display: block;
+    @include apply-type(body-1-semibold);
+  }
+
+.error{
+    display: block;    
+     @include apply-type(body-1-medium); 
+    color:red;
+}
