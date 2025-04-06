@@ -1,7 +1,5 @@
 import './AuthForm.styles.scss';
 
 export const AuthFormLayout = () => {
-    return (
-        <form></form>
-    )
-}
+  return <form></form>;
+};

@@ -1,14 +1,14 @@
-import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import { HYDRATE } from "next-redux-wrapper";
+import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+import { HYDRATE } from 'next-redux-wrapper';
 
 export const pokemonApi = createApi({
   baseQuery: fetchBaseQuery({
-    baseUrl: "https://pokeapi.co/api/v2/",
+    baseUrl: 'https://pokeapi.co/api/v2/',
   }),
   extractRehydrationInfo(action, { reducerPath }) {
     if (action.type === HYDRATE) {
-        //eslint-disable-next-line
-        return (action.payload as { [key: string]: any })[reducerPath];
+      //eslint-disable-next-line
+      return (action.payload as { [key: string]: any })[reducerPath];
     }
   },
   tagTypes: [],
