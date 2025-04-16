@@ -1,8 +1,8 @@
 import Image from 'next/image';
 
 import { combineClassNames } from '@/utils';
-import styles from './Button.styles.scss';
-import { TButton } from '@/types/components';
+import styles from './Button.module.scss';
+import { TButton } from '@/shared/types/components';
 
 export const Button = ({
   text,
@@ -12,6 +12,7 @@ export const Button = ({
   disabled = false,
   className = '',
   variant = undefined,
+  // key = undefined,
 }: TButton) => {
   const combinedClassName = combineClassNames({
     base: styles.btn,
@@ -26,6 +27,7 @@ export const Button = ({
         className={combinedClassName}
         onClick={onClick}
         disabled={disabled}
+        // key={key}
       >
         {ButtonImage ? (
           <ButtonImage className={styles.img} />
@@ -40,7 +42,12 @@ export const Button = ({
     );
   }
   return (
-    <button className={combinedClassName} onClick={onClick} disabled={disabled}>
+    <button
+      // key={key}
+      className={combinedClassName}
+      onClick={onClick}
+      disabled={disabled}
+    >
       {text}
     </button>
   );

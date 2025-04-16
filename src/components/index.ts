@@ -1,6 +1,12 @@
+export { AlbumCover } from './ui/albumCover/AlbumCover';
 export { AuthForm } from './ui/authForm/AuthForm';
+export { AuthFormLayout } from './layout';
 export { Button } from './ui/button/Button';
 export { Card } from './ui/card/Card';
+export { ControlPanel } from './ui/controlPanel/ControlPanel';
 export { Input } from './ui/input/Input';
 export { Player } from './ui/player/Player';
+export { Playlist } from './ui/playlist/Playlist';
+export { PlayerLayout } from './layout/playerLayout/PlayerLayout';
 export { RegistrationForm } from './ui/registrationForm/RegistrationForm';
+export { SongItem } from './ui/songItem/SongItem';

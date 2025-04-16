@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { Roboto } from 'next/font/google';
+import { Press_Start_2P } from 'next/font/google';
 
 import '../styles/main.scss';
 // import './globals.css';
@@ -8,6 +9,13 @@ const roboto = Roboto({
   variable: '--font-roboto',
   subsets: ['latin'],
 });
+
+const pressStart2P = Press_Start_2P({
+  subsets: ['latin'],
+  weight: '400',
+  variable: '--font-press-start',
+});
+
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -21,7 +29,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${roboto.variable}`}>{children}</body>
+      <body className={`${roboto.variable} ${pressStart2P.variable}`}>{children}</body>
     </html>
   );
 }

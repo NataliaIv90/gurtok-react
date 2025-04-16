@@ -8,6 +8,7 @@ export type TButton = {
   disabled?: boolean;
   className?: string | string[];
   variant?: 'primary' | 'secondary' | 'danger' | 'image' | 'default';
+  // key?: string | number;
 };
 
 export type TInputProps = {
@@ -15,4 +16,21 @@ export type TInputProps = {
   error?: string;
   type: 'text' | 'password';
   name: string;
+};
+
+export type TPlaylistProps = {
+  data?: TSongItemData[];
+};
+
+export type TSongItemData = {
+  id: string;
+  albumCover?:string;
+  artist: string;
+  songName: string;
+  onButtonClick?: ()=>void;
+  playlistItem?:boolean;
+};
+
+export type TSongItemProps = {
+ data: TSongItemData;
 };

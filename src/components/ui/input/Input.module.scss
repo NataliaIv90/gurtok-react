@@ -4,11 +4,11 @@
 
 .label {
     display: block;
-    @include apply-type(body-1-semibold);
+    // @include apply-type(body-1-semibold);
   }
 
 .error{
     display: block;    
-     @include apply-type(body-1-medium); 
+    //  @include apply-type(body-1-medium); 
     color:red;
 }

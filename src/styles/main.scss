@@ -3,26 +3,25 @@
 @import './breakpoints';
 
 :root {
-    --background: #ffffff;
-    --foreground: #1b1b1b;
-    --primary-text: $primary-text-light;
-    --secondary-text: $secondary-text-light;
-    --muted-text: $muted-text-light;
-    --link-text: $link-text-light;
-    --red: $red-light;
-  }
-  
-  @media (prefers-color-scheme: dark) {
-    :root {
-        --background: #0a0a0a;
-        --foreground: #ededed;
-        --primary-text: $primary-text-dark;
-        --secondary-text: $secondary-text-dark;
-        --muted-text: $muted-text-dark;
-        --link-text: $link-text-dark;
-        --red: $red-dark;
-    }
-  }
+  --bg: #f5efe5;
+  --surface: #fdfaf5;
+  --text: #4a3b2f;
+  --primary: #e7b7c8;
+  --accent: #c6c4e3;
+  --highlight: #e87a7a;
+  --muted: #b8a9a0;
+}
+
+.dark {
+  --bg: #2c2520;
+  --surface: #3a302a;
+  --text: #f0e7de;
+  --primary: #d9a3b5;
+  --accent: #9a90c6;
+  --highlight: #e87a7a;
+  --muted: #7b6d64;
+}
+
 
   
 html,
@@ -34,7 +33,7 @@ body {
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: Roboto, sans-serif;
+  font-family: var(--font-press-start); 
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }

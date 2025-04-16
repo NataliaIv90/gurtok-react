@@ -1,5 +1,5 @@
-import styles from './Input.styles.scss';
-import { TInputProps } from '@/types/components';
+import styles from './Input.module.scss';
+import { TInputProps } from '@/shared/types/components';
 
 export const Input = ({ label, error, type = 'text', name }: TInputProps) => {
   return (

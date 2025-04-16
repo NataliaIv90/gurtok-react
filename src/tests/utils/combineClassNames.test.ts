@@ -20,7 +20,7 @@ describe('combineClassNames', () => {
     expect(result).toBe('btn primary large');
   });
 
-  it('should trim extra spaces if extra is empty string', () => {
+  it('should trim extra spaces', () => {
     const result = combineClassNames({ base: 'btn', extra: '' });
     expect(result).toBe('btn');
   });

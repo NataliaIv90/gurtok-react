@@ -1,0 +1,9 @@
+.wrapper{
+    margin: 0 auto;
+    height: 800px;
+    width: 600px;
+    display: grid;
+    grid-template-rows: 1fr 5fr 1.5fr;
+    align-self:center;
+    text-align: center;
+}
