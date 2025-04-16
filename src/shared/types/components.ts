@@ -24,13 +24,13 @@ export type TPlaylistProps = {
 
 export type TSongItemData = {
   id: string;
-  albumCover?:string;
+  albumCover?: string;
   artist: string;
   songName: string;
-  onButtonClick?: ()=>void;
-  playlistItem?:boolean;
+  onButtonClick?: () => void;
+  playlistItem?: boolean;
 };
 
 export type TSongItemProps = {
- data: TSongItemData;
+  data: TSongItemData;
 };

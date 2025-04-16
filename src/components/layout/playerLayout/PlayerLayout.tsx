@@ -1,6 +1,6 @@
 'use client';
 
-import {  ControlPanel, SongItem } from '@/components';
+import { ControlPanel, SongItem } from '@/components';
 
 import styles from './PlayerLayout.module.scss';
 
@@ -19,12 +19,12 @@ export const PlayerLayout = ({}: TPlayer) => {
     <div className={styles.wrapper}>
       <h1>Now playing</h1>
       <SongItem
-  data={{
-    id: 'id',
-    artist: 'Artist',
-    songName: 'Song 1',
-  }}
-/>
+        data={{
+          id: 'id',
+          artist: 'Artist',
+          songName: 'Song 1',
+        }}
+      />
       <ControlPanel
         // addToPlaylistBtnContent="Add"
         likeBtnContent="like"
@@ -36,7 +36,7 @@ export const PlayerLayout = ({}: TPlayer) => {
         onTogglePlay={onTogglePlay}
         playBtnContent="Play"
         prevBtnContent="Prev"
-        />
+      />
     </div>
   );
 };

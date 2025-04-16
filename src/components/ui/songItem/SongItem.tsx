@@ -7,29 +7,33 @@ import styles from './SongItem.module.scss';
 import defaultImage from '../../../../public/images.jpeg';
 
 export const SongItem = ({ data }: TSongItemProps) => {
-  const { id, albumCover=defaultImage, artist, songName, onButtonClick, playlistItem } = data;
+  const {
+    id,
+    albumCover = defaultImage,
+    artist,
+    songName,
+    onButtonClick,
+    playlistItem,
+  } = data;
 
-if (!playlistItem){
-  return(
-    <section className={styles.wrapper}>
-     <div className={styles.imageWrapper}>
-     <Image
-  src={albumCover}
-  alt={`${songName} cover`}
-  // fill
-  className={styles.image}
-/>
-
+  if (!playlistItem) {
+    return (
+      <section className={styles.wrapper}>
+        <div className={styles.imageWrapper}>
+          <Image
+            src={albumCover}
+            alt={`${songName} cover`}
+            // fill
+            className={styles.image}
+          />
         </div>
         <div className={styles.info}>
-    <p className={styles.songName}>{songName}</p>
-    <p className={styles.artist}>{artist}</p>
-  </div>
-
-    </section>
-
-  )
-}
+          <p className={styles.songName}>{songName}</p>
+          <p className={styles.artist}>{artist}</p>
+        </div>
+      </section>
+    );
+  }
 
   return (
     <section className={styles.playlistItemWrapper} key={id}>

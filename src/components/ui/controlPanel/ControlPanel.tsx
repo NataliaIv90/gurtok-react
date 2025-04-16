@@ -47,7 +47,12 @@ export const ControlPanel = ({
         typeof content === 'string' ? (
           <Button key={key} text={content} onClick={onClick} />
         ) : (
-          <Button key={key} ButtonImage={content} onClick={onClick} variant="image" />
+          <Button
+            key={key}
+            ButtonImage={content}
+            onClick={onClick}
+            variant="image"
+          />
         )
       )}
     </section>
