@@ -1,8 +1,8 @@
-import { ElementType } from 'react';
+import { ReactNode } from 'react';
 
 export type TButton = {
   imageSrc?: string;
-  ButtonImage?: ElementType;
+  ButtonImage?: ReactNode;
   text?: string;
   onClick: () => void;
   disabled?: boolean;

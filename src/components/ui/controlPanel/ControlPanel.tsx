@@ -1,22 +1,25 @@
-import { ElementType } from 'react';
+import { ReactNode } from 'react';
 import { Button } from '@/components';
 import styles from './ControlPanel.module.scss';
 
 export type TControlPanelProps = {
   onTogglePlay: () => void;
-  playBtnContent: string | ElementType;
+  playBtnContent: string | ReactNode;
   onNextvClick: () => void;
-  nextBtnContent: string | ElementType;
+  nextBtnContent: string | ReactNode;
   onPrevClick: () => void;
-  prevBtnContent: string | ElementType;
+  prevBtnContent: string | ReactNode;
   onLikeBtnClick: () => void;
-  likeBtnContent: string | ElementType;
+  likeBtnContent: string | ReactNode;
+  onGoToListBtnClick: () => void;
+  goToListContent: string | ReactNode;
+  stopBtnContent: string | ReactNode;
   // onAddToPlaylistClick: () => void;
-  // addToPlaylistBtnContent: string | ElementType;
+  // addToPlaylistBtnContent: string | ReactNode;
 };
 
 type ButtonConfig = {
-  content: string | ElementType;
+  content: string | ReactNode;
   onClick: () => void;
   key: string;
 };
@@ -32,10 +35,20 @@ export const ControlPanel = ({
   // addToPlaylistBtnContent,
   onLikeBtnClick,
   likeBtnContent,
+  onGoToListBtnClick,
+  goToListContent,
+  stopBtnContent,
 }: TControlPanelProps) => {
+  const isPlaying = false;
+
   const buttons: ButtonConfig[] = [
+    { content: goToListContent, onClick: onGoToListBtnClick, key: 'list' },
     { content: prevBtnContent, onClick: onPrevClick, key: 'prev' },
-    { content: playBtnContent, onClick: onTogglePlay, key: 'play' },
+    {
+      content: isPlaying ? stopBtnContent : playBtnContent,
+      onClick: onTogglePlay,
+      key: 'play',
+    },
     { content: nextBtnContent, onClick: onNextvClick, key: 'next' },
     { content: likeBtnContent, onClick: onLikeBtnClick, key: 'like' },
     // { content: addToPlaylistBtnContent, onClick: onAddToPlaylistClick, key: 'addToPlaylist' },
@@ -43,18 +56,11 @@ export const ControlPanel = ({
 
   return (
     <section className={styles.wrapper}>
-      {buttons.map(({ content, onClick, key }) =>
-        typeof content === 'string' ? (
-          <Button key={key} text={content} onClick={onClick} />
-        ) : (
-          <Button
-            key={key}
-            ButtonImage={content}
-            onClick={onClick}
-            variant="image"
-          />
-        )
-      )}
+      {buttons.map(({ content, onClick, key }) => (
+        <Button key={key} onClick={onClick}>
+          {content}
+        </Button>
+      ))}
     </section>
   );
 };

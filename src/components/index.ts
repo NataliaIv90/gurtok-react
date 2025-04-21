@@ -10,3 +10,4 @@ export { Playlist } from './ui/playlist/Playlist';
 export { PlayerLayout } from './layout/playerLayout/PlayerLayout';
 export { RegistrationForm } from './ui/registrationForm/RegistrationForm';
 export { SongItem } from './ui/songItem/SongItem';
+export { SVGIcon } from './ui/SVGIcon/SVGIcon';

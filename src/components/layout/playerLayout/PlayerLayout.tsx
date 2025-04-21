@@ -1,7 +1,6 @@
 'use client';
 
-import { ControlPanel, SongItem } from '@/components';
-
+import { ControlPanel, SongItem, SVGIcon } from '@/components';
 import styles from './PlayerLayout.module.scss';
 
 type TPlayer = {
@@ -12,8 +11,8 @@ export const PlayerLayout = ({}: TPlayer) => {
   const onTogglePlay = () => {};
   const onNextvClick = () => {};
   const onPrevClick = () => {};
-  // const onAddToPlaylistClick = () => {};
   const onLikeBtnClick = () => {};
+  const onGoToListBtnClick = () => {};
 
   return (
     <div className={styles.wrapper}>
@@ -21,21 +20,22 @@ export const PlayerLayout = ({}: TPlayer) => {
       <SongItem
         data={{
           id: 'id',
-          artist: 'Artist',
-          songName: 'Song 1',
+          artist: "Artist's long long long long name",
+          songName: 'Song 1 long long long long name',
         }}
       />
       <ControlPanel
-        // addToPlaylistBtnContent="Add"
-        likeBtnContent="like"
-        nextBtnContent="Next"
-        // onAddToPlaylistClick={onAddToPlaylistClick}
-        onLikeBtnClick={onLikeBtnClick}
-        onNextvClick={onNextvClick}
-        onPrevClick={onPrevClick}
         onTogglePlay={onTogglePlay}
-        playBtnContent="Play"
-        prevBtnContent="Prev"
+        playBtnContent={<SVGIcon name="play" alt="Play button" />}
+        stopBtnContent={<SVGIcon name="stop" alt="Stop button" />}
+        onNextvClick={onNextvClick}
+        nextBtnContent={<SVGIcon name="next" alt="Next button" />}
+        onPrevClick={onPrevClick}
+        prevBtnContent={<SVGIcon name="prev" alt="Previous button" />} // change to 'prev' if you have an icon for that
+        onLikeBtnClick={onLikeBtnClick}
+        likeBtnContent={<SVGIcon name="heart" alt="Like button" />}
+        onGoToListBtnClick={onGoToListBtnClick}
+        goToListContent={<SVGIcon name="list" alt="Go to list" />}
       />
     </div>
   );

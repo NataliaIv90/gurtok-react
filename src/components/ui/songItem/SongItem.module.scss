@@ -1,9 +1,10 @@
 .wrapper {
     width: 100%;
     height: 100%;
+    max-width: 100vw;
     display: grid;
     grid-template-rows: 5fr 1fr;
-    padding: 1.5rem;
+    padding: 1rem;
     font-family: var(--font-press-start);
   }
   
@@ -39,11 +40,24 @@
 // dark inner
   }
 
-  .songName{
+  .songName {
     font-size: 2rem;
     margin-bottom: 1.5rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
-
-  .artist{
+  
+  .artist {
     font-size: 1.5rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  
+  .info{
+    width: 90%;
+    overflow: hidden;
+    // text-align: center;
+    margin: auto;
   }

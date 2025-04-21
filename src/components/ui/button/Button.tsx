@@ -1,19 +1,22 @@
-import Image from 'next/image';
-
+import { ReactNode } from 'react';
 import { combineClassNames } from '@/utils';
 import styles from './Button.module.scss';
-import { TButton } from '@/shared/types/components';
+
+type ButtonProps = {
+  onClick: () => void;
+  disabled?: boolean;
+  className?: string | string[];
+  variant?: string;
+  children: ReactNode;
+};
 
 export const Button = ({
-  text,
-  imageSrc,
-  ButtonImage,
   onClick,
   disabled = false,
   className = '',
-  variant = undefined,
-  // key = undefined,
-}: TButton) => {
+  variant,
+  children,
+}: ButtonProps) => {
   const combinedClassName = combineClassNames({
     base: styles.btn,
     extra: Array.isArray(className)
@@ -21,34 +24,9 @@ export const Button = ({
       : [styles[variant || ''], className],
   });
 
-  if (variant === 'image') {
-    return (
-      <button
-        className={combinedClassName}
-        onClick={onClick}
-        disabled={disabled}
-        // key={key}
-      >
-        {ButtonImage ? (
-          <ButtonImage className={styles.img} />
-        ) : (
-          <Image
-            src={imageSrc || ''}
-            alt="Button image"
-            className={styles.img}
-          />
-        )}
-      </button>
-    );
-  }
   return (
-    <button
-      // key={key}
-      className={combinedClassName}
-      onClick={onClick}
-      disabled={disabled}
-    >
-      {text}
+    <button className={combinedClassName} onClick={onClick} disabled={disabled}>
+      {children}
     </button>
   );
 };
