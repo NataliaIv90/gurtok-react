@@ -22,7 +22,9 @@ export type TPlaylistProps = {
   data?: TSongItemData[];
 };
 
-export interface TSongItemData extends Pick<JamendoTrack, 'id' | 'name' | 'artist_name' | 'album_image'>, Partial<Omit<JamendoTrack, 'id' | 'name' | 'artist_name' | 'album_image'>> {
+export interface TSongItemData
+  extends Pick<JamendoTrack, 'id' | 'name' | 'artist_name' | 'album_image'>,
+    Partial<Omit<JamendoTrack, 'id' | 'name' | 'artist_name' | 'album_image'>> {
   onButtonClick?: () => void;
   playlistItem?: boolean;
   duration: number;
@@ -31,4 +33,3 @@ export interface TSongItemData extends Pick<JamendoTrack, 'id' | 'name' | 'artis
 export type TSongItemProps = {
   data: TSongItemData;
 };
-

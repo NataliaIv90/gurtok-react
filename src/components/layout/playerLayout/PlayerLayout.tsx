@@ -2,7 +2,7 @@
 
 import { useRef, useState } from 'react';
 
-import {ControlPanelContainer, SongItem } from '@/components';
+import { ControlPanelContainer, SongItem } from '@/components';
 import { useGetTracksQuery } from '@/shared/redux/jamendoApi';
 
 import defaultImage from '../../../../public/images.jpeg';
@@ -14,14 +14,12 @@ export const PlayerLayout = () => {
   const [duration, setDuration] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
 
-
-
   const track = data?.results[0];
 
-    const handleTogglePlay = () => {
+  const handleTogglePlay = () => {
     const audio = audioRef.current;
     if (!audio) return;
-  
+
     if (audio.paused) {
       audio.play();
       setIsPlaying(true);
@@ -39,7 +37,7 @@ export const PlayerLayout = () => {
   };
 
   if (isLoading) return <div>Loading...</div>;
-  
+
   if (!track) {
     return <div>No track found</div>;
   }
@@ -55,20 +53,23 @@ export const PlayerLayout = () => {
       <SongItem
         data={{
           id: track.id,
-          artist_name: track.artist_name || "Unknown Artist",
+          artist_name: track.artist_name || 'Unknown Artist',
           name: track.name || 'Unknown Song Name',
           album_image: track.album_image || defaultImage,
         }}
       />
 
       <>
-      <audio ref={audioRef} src={track.audio} 
-  onLoadedMetadata={handleLoadedMetadata}/>
-      <ControlPanelContainer
-        onTogglePlay={handleTogglePlay}
-        isPlaying={isPlaying}
-        duration={duration}
-      />
+        <audio
+          ref={audioRef}
+          src={track.audio}
+          onLoadedMetadata={handleLoadedMetadata}
+        />
+        <ControlPanelContainer
+          onTogglePlay={handleTogglePlay}
+          isPlaying={isPlaying}
+          duration={duration}
+        />
       </>
     </div>
   );
