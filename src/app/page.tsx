@@ -1,10 +1,11 @@
+'use client';
 import { PlayerLayout } from '@/components';
-import styles from './page.module.css';
+// import { TrackList } from '@/components/layout/trackList/TrackList';
 
-export default function Home() {
+export default function HomePage() {
   return (
-    <div className={styles.page}>
-      <PlayerLayout name="Name" />
+    <div>
+      <PlayerLayout />
     </div>
   );
 }

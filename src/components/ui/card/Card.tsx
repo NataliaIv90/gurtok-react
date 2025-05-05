@@ -21,7 +21,11 @@ export const Card = ({
     <section className={styles.card}>
       <div className={styles['img-wrapper']}>
         <Image src={img} alt={`${title} cover`} className={styles.img} />
-        {onClick ? <Button variant="image" onClick={playAudio} /> : null}
+        {onClick ? (
+          <Button variant="image" onClick={playAudio}>
+            Play
+          </Button>
+        ) : null}
       </div>
       <h3 className={styles.title}>{title}</h3>
       <p className={styles.subtitle}>{subtitle}</p>

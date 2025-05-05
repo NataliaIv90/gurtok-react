@@ -1,42 +1,75 @@
 'use client';
 
-import { ControlPanel, SongItem, SVGIcon } from '@/components';
+import { useRef, useState } from 'react';
+
+import {ControlPanelContainer, SongItem } from '@/components';
+import { useGetTracksQuery } from '@/shared/redux/jamendoApi';
+
+import defaultImage from '../../../../public/images.jpeg';
 import styles from './PlayerLayout.module.scss';
 
-type TPlayer = {
-  name: string;
-};
+export const PlayerLayout = () => {
+  const audioRef = useRef<HTMLAudioElement>(null);
+  const { data, error, isLoading } = useGetTracksQuery({ genre: 'rock' });
+  const [duration, setDuration] = useState(0);
+  const [isPlaying, setIsPlaying] = useState(false);
 
-export const PlayerLayout = ({}: TPlayer) => {
-  const onTogglePlay = () => {};
-  const onNextvClick = () => {};
-  const onPrevClick = () => {};
-  const onLikeBtnClick = () => {};
-  const onGoToListBtnClick = () => {};
+
+
+  const track = data?.results[0];
+
+    const handleTogglePlay = () => {
+    const audio = audioRef.current;
+    if (!audio) return;
+  
+    if (audio.paused) {
+      audio.play();
+      setIsPlaying(true);
+    } else {
+      audio.pause();
+      setIsPlaying(false);
+    }
+  };
+
+  const handleLoadedMetadata = () => {
+    const audio = audioRef.current;
+    if (audio) {
+      setDuration(audio.duration);
+    }
+  };
+
+  if (isLoading) return <div>Loading...</div>;
+  
+  if (!track) {
+    return <div>No track found</div>;
+  }
+
+  if (error) {
+    console.error('Error fetching tracks:', error);
+    return <div>There was an error fetching the tracks</div>;
+  }
 
   return (
     <div className={styles.wrapper}>
       <h1>Now playing</h1>
       <SongItem
         data={{
-          id: 'id',
-          artist: "Artist's long long long long name",
-          songName: 'Song 1 long long long long name',
+          id: track.id,
+          artist_name: track.artist_name || "Unknown Artist",
+          name: track.name || 'Unknown Song Name',
+          album_image: track.album_image || defaultImage,
         }}
       />
-      <ControlPanel
-        onTogglePlay={onTogglePlay}
-        playBtnContent={<SVGIcon name="play" alt="Play button" />}
-        stopBtnContent={<SVGIcon name="stop" alt="Stop button" />}
-        onNextvClick={onNextvClick}
-        nextBtnContent={<SVGIcon name="next" alt="Next button" />}
-        onPrevClick={onPrevClick}
-        prevBtnContent={<SVGIcon name="prev" alt="Previous button" />} // change to 'prev' if you have an icon for that
-        onLikeBtnClick={onLikeBtnClick}
-        likeBtnContent={<SVGIcon name="heart" alt="Like button" />}
-        onGoToListBtnClick={onGoToListBtnClick}
-        goToListContent={<SVGIcon name="list" alt="Go to list" />}
+
+      <>
+      <audio ref={audioRef} src={track.audio} 
+  onLoadedMetadata={handleLoadedMetadata}/>
+      <ControlPanelContainer
+        onTogglePlay={handleTogglePlay}
+        isPlaying={isPlaying}
+        duration={duration}
       />
+      </>
     </div>
   );
 };

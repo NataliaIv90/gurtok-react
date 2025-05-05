@@ -1,4 +1,5 @@
 import { ReactNode } from 'react';
+import { JamendoTrack } from './jamendo';
 
 export type TButton = {
   imageSrc?: string;
@@ -8,7 +9,6 @@ export type TButton = {
   disabled?: boolean;
   className?: string | string[];
   variant?: 'primary' | 'secondary' | 'danger' | 'image' | 'default';
-  // key?: string | number;
 };
 
 export type TInputProps = {
@@ -22,15 +22,13 @@ export type TPlaylistProps = {
   data?: TSongItemData[];
 };
 
-export type TSongItemData = {
-  id: string;
-  albumCover?: string;
-  artist: string;
-  songName: string;
+export interface TSongItemData extends Pick<JamendoTrack, 'id' | 'name' | 'artist_name' | 'album_image'>, Partial<Omit<JamendoTrack, 'id' | 'name' | 'artist_name' | 'album_image'>> {
   onButtonClick?: () => void;
   playlistItem?: boolean;
-};
+  duration: number;
+}
 
 export type TSongItemProps = {
   data: TSongItemData;
 };
+

@@ -4,57 +4,37 @@ import Image from 'next/image';
 
 import { TSongItemProps } from '@/shared/types/components';
 import styles from './SongItem.module.scss';
-import defaultImage from '../../../../public/images.jpeg';
 
 export const SongItem = ({ data }: TSongItemProps) => {
   const {
     id,
-    albumCover = defaultImage,
-    artist,
-    songName,
+    album_image ,
+    artist_name,
+    name,
     onButtonClick,
     playlistItem,
   } = data;
 
-  if (!playlistItem) {
     return (
-      <section className={styles.wrapper}>
+      <section key={id} className={playlistItem ?  styles.playlistItemWrapper : styles.wrapper}>
         <div className={styles.imageWrapper}>
           <Image
-            src={albumCover}
-            alt={`${songName} cover`}
-            // fill
+            src={              album_image }
+            alt={`${name} cover`}
+            fill
             className={styles.image}
           />
         </div>
         <div className={styles.info}>
-          <p className={styles.songName}>{songName}</p>
-          <p className={styles.artist}>{artist}</p>
+          <p className={styles.songName}>{name}</p>
+          <p className={styles.artist}>{artist_name}</p>
+
+          {playlistItem ? (
+                <button onClick={onButtonClick} className={styles.button}>
+                Play
+              </button>
+          ):null}
         </div>
       </section>
     );
-  }
-
-  return (
-    <section className={styles.playlistItemWrapper} key={id}>
-      {albumCover && (
-        <div className={styles.imageWrapper}>
-          <Image
-            src={albumCover}
-            alt={`${songName} cover`}
-            width={100}
-            height={100}
-            className={styles.image}
-          />
-        </div>
-      )}
-      <div className={styles.info}>
-        <p className={styles.songName}>{songName}</p>
-        <p className={styles.artist}>{artist}</p>
-        <button onClick={onButtonClick} className={styles.button}>
-          Play
-        </button>
-      </div>
-    </section>
-  );
 };

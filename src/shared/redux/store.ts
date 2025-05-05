@@ -1,18 +1,15 @@
+// store.js
 import { configureStore } from '@reduxjs/toolkit';
-// import { createWrapper } from "next-redux-wrapper";
-// import { pokemonApi } from "./pokemonApi";
+import { jamendoApi } from './jamendoApi';
 
-export const makeStore = () =>
-  configureStore({
-    reducer: {
-      //   [pokemonApi.reducerPath]: pokemonApi.reducer,
-    },
-    middleware: (gDM) => gDM(),
-    // .concat(pokemonApi.middleware),
-  });
+export const store = configureStore({
+  reducer: {
+    [jamendoApi.reducerPath]: jamendoApi.reducer,
+  },
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware().concat(jamendoApi.middleware),
+});
 
-export type AppStore = ReturnType<typeof makeStore>;
-export type RootState = ReturnType<AppStore['getState']>;
-export type AppDispatch = AppStore['dispatch'];
-
-// export const wrapper = createWrapper<AppStore>(makeStore, { debug: true });
+export default store;
+export type RootState = ReturnType<typeof store.getState>;
+export type AppDispatch = typeof store.dispatch;
