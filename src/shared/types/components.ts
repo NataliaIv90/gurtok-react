@@ -27,7 +27,6 @@ export interface TSongItemData
     Partial<Omit<JamendoTrack, 'id' | 'name' | 'artist_name' | 'album_image'>> {
   onButtonClick?: () => void;
   playlistItem?: boolean;
-  duration: number;
 }
 
 export type TSongItemProps = {

@@ -10,6 +10,7 @@ import styles from './PlayerLayout.module.scss';
 
 export const PlayerLayout = () => {
   const audioRef = useRef<HTMLAudioElement>(null);
+  const [currentTime, setCurrentTime] = useState(0);
   const { data, error, isLoading } = useGetTracksQuery({ genre: 'rock' });
   const [duration, setDuration] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
@@ -33,6 +34,13 @@ export const PlayerLayout = () => {
     const audio = audioRef.current;
     if (audio) {
       setDuration(audio.duration);
+    }
+  };
+
+  const handleTimeUpdate = () => {
+    const audio = audioRef.current;
+    if (audio) {
+      setCurrentTime(audio.currentTime);
     }
   };
 
@@ -64,11 +72,14 @@ export const PlayerLayout = () => {
           ref={audioRef}
           src={track.audio}
           onLoadedMetadata={handleLoadedMetadata}
+          onTimeUpdate={handleTimeUpdate}
         />
+
         <ControlPanelContainer
           onTogglePlay={handleTogglePlay}
           isPlaying={isPlaying}
           duration={duration}
+          currentTime={currentTime}
         />
       </>
     </div>

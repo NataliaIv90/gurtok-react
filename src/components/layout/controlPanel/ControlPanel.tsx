@@ -60,11 +60,12 @@ import { ControlPanelUI, SVGIcon } from '@/components';
 type Props = {
   onTogglePlay: () => void;
   isPlaying: boolean;
-
   duration: number;
+  currentTime: number;
 };
 
 export const ControlPanelContainer = ({
+  currentTime,
   onTogglePlay,
   isPlaying,
   duration,
@@ -72,6 +73,7 @@ export const ControlPanelContainer = ({
   return (
     <ControlPanelUI
       duration={duration}
+      currentTime={currentTime}
       onTogglePlay={onTogglePlay}
       playBtnContent={
         isPlaying ? (

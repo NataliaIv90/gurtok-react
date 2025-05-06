@@ -15,6 +15,7 @@ export type TControlPanelProps = {
   goToListContent: string | ReactNode;
   stopBtnContent: string | ReactNode;
   duration: number;
+  currentTime: number;
 };
 
 type ButtonConfig = {
@@ -36,6 +37,7 @@ export const ControlPanelUI = ({
   onGoToListBtnClick,
   goToListContent,
   duration,
+  currentTime,
   // stopBtnContent,
 }: TControlPanelProps) => {
   // const isPlaying = false;
@@ -75,19 +77,37 @@ export const ControlPanelUI = ({
 
   return (
     <section className={styles.wrapper}>
+      <div className={styles.progressWrapper}>
+        <span className={styles.time}>
+          {Math.floor(currentTime / 60)}:
+          {Math.floor(currentTime % 60)
+            .toString()
+            .padStart(2, '0')}
+        </span>
+
+        <input
+          type="range"
+          min="0"
+          max={duration}
+          value={currentTime}
+          readOnly
+          className={styles.progressBar}
+        />
+
+        <span className={styles.time}>
+          {Math.floor(duration / 60)}:
+          {Math.floor(duration % 60)
+            .toString()
+            .padStart(2, '0')}
+        </span>
+      </div>
+
       <div className={styles.buttonsWapper}>
         {buttons.map(({ content, onClick, key, disabled }) => (
           <Button key={key} onClick={onClick} disabled={disabled}>
             {content}
           </Button>
         ))}
-      </div>
-      <div className={styles.duration}>
-        {duration
-          ? `${Math.floor(duration / 60)}:${Math.floor(duration % 60)
-              .toString()
-              .padStart(2, '0')}`
-          : '0:00'}
       </div>
     </section>
   );
