@@ -18,7 +18,7 @@ export const GenreSongsPage = () => {
   return (
     <div className={styles.wrapper}>
       <div>{trackIndex !== undefined ? <PlayerLayout /> : <div>Оберіть пісню</div>}</div>
-      <GenreSongsList genre={genre} tracks={data.results}  />
+      <GenreSongsList genre={genre} tracks={data.results} />
     </div>
   );
 };

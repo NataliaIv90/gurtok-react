@@ -5,8 +5,8 @@
   padding: 1rem;
   font-family: var(--font-press-start);
   display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
+  flex-direction: column;
+  justify-content: flex-start;
 }
 
 .imageWrapper {
@@ -69,8 +69,8 @@
   align-items: center;
   gap: 0.5rem;
   margin: 0;
-  padding:  1rem;
-    border-bottom: 1px solid #66666633;
+  padding: 1rem;
+  border-bottom: 1px solid #66666633;
 
   .imageWrapper {
     width: 3rem;

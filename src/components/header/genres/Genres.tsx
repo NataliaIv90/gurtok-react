@@ -4,13 +4,13 @@ import styles from './Genres.module.scss';
 import { Button } from '../../ui/button/Button';
 
 export const Genres = () => (
-    <>
-      <div className={styles.wrapper}>
-        {genresArray.map((genre) => (
-          <Link key={genre} to={`/${genre}`}>
-            <Button>{genre}</Button>
-          </Link>
-        ))}
-      </div>
-    </>
-  );
+  <>
+    <div className={styles.wrapper}>
+      {genresArray.map((genre) => (
+        <Link key={genre} to={`/${genre}`}>
+          <Button>{genre}</Button>
+        </Link>
+      ))}
+    </div>
+  </>
+);
