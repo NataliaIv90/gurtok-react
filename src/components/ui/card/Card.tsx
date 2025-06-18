@@ -1,8 +1,6 @@
-import Image from 'next/image';
-
 import { Button } from '@/components';
-import { playAudio } from '@/utils';
-import styles from './Card.styles.scss';
+import { playAudio } from '@/shared/utils';
+import styles from './Card.module.scss';
 
 type TCardProps = {
   img: string;
@@ -11,16 +9,11 @@ type TCardProps = {
   onClick?: () => void;
 };
 
-export const Card = ({
-  img = '',
-  title = '',
-  subtitle = '',
-  onClick,
-}: TCardProps) => {
+export const Card = ({ img = '', title = '', subtitle = '', onClick }: TCardProps) => {
   return (
     <section className={styles.card}>
       <div className={styles['img-wrapper']}>
-        <Image src={img} alt={`${title} cover`} className={styles.img} />
+        <img src={img} alt={`${title} cover`} className={styles.img} />
         {onClick ? (
           <Button variant="image" onClick={playAudio}>
             Play

@@ -1,11 +1,9 @@
-'use client';
-
 import { useRef, useState } from 'react';
 
 import { ControlPanelContainer, SongItem } from '@/components';
 import { useGetTracksQuery } from '@/shared/redux/jamendoApi';
 
-import defaultImage from '../../../../public/images.jpeg';
+// import defaultImage from 'images/images.jpg';
 import styles from './PlayerLayout.module.scss';
 
 export const PlayerLayout = () => {
@@ -63,7 +61,7 @@ export const PlayerLayout = () => {
           id: track.id,
           artist_name: track.artist_name || 'Unknown Artist',
           name: track.name || 'Unknown Song Name',
-          album_image: track.album_image || defaultImage,
+          album_image: track.album_image, //|| defaultImage,
         }}
       />
 

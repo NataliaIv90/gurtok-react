@@ -1,9 +1,9 @@
-import { ReactNode } from 'react';
-import { combineClassNames } from '@/utils';
+import type { ReactNode } from 'react';
+import { combineClassNames } from '@/shared/utils';
 import styles from './Button.module.scss';
 
 type ButtonProps = {
-  onClick: () => void;
+  onClick?: () => void;
   disabled?: boolean;
   className?: string | string[];
   variant?: string;

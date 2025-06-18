@@ -1,37 +1,25 @@
-'use client';
-
-import Image from 'next/image';
-
-import { TSongItemProps } from '@/shared/types/components';
+import type { TSongItemProps } from '@/shared/types/components';
 import styles from './SongItem.module.scss';
+import { Button } from '../button/Button';
 
-export const SongItem = ({ data }: TSongItemProps) => {
-  const { id, album_image, artist_name, name, onButtonClick, playlistItem } =
-    data;
+export const SongItem = ({ data, playlistItem }: TSongItemProps) => {
+  const { id, album_image, artist_name, name } = data;
 
   return (
-    <section
-      key={id}
-      className={playlistItem ? styles.playlistItemWrapper : styles.wrapper}
-    >
+    <section key={id} className={playlistItem ? styles.playlistItemWrapper : styles.wrapper}>
       <div className={styles.imageWrapper}>
-        <Image
-          src={album_image}
-          alt={`${name} cover`}
-          fill
-          className={styles.image}
-        />
+        <img src={album_image} alt={`${name} cover`} className={styles.image} />
       </div>
       <div className={styles.info}>
         <p className={styles.songName}>{name}</p>
         <p className={styles.artist}>{artist_name}</p>
-
-        {playlistItem ? (
-          <button onClick={onButtonClick} className={styles.button}>
-            Play
-          </button>
-        ) : null}
       </div>
+
+      {playlistItem ? (
+        <Button onClick={() => {}} className={styles.button}>
+          Play
+        </Button>
+      ) : null}
     </section>
   );
 };

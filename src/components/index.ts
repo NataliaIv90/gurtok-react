@@ -1,11 +1,15 @@
 export { AlbumCover } from './ui/albumCover/AlbumCover';
+export { App } from './app/App';
 export { AuthForm } from './ui/authForm/AuthForm';
 export { AuthFormLayout } from './layout';
 export { Button } from './ui/button/Button';
 export { Card } from './ui/card/Card';
 export { ControlPanelContainer } from './layout/controlPanel/ControlPanel';
 export { ControlPanelUI } from './ui/ControlPanelUI/ControlPanelUI';
+export { Genres } from './genres/Genres';
+export { GenreSongsList } from './genreSongsList/GenreSongsList';
 export { Input } from './ui/input/Input';
+export { Page404 } from './404page/Page404';
 export { Player } from './ui/player/Player';
 export { Playlist } from './ui/playlist/Playlist';
 export { PlayerLayout } from './layout/playerLayout/PlayerLayout';

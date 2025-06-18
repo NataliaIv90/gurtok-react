@@ -14,6 +14,7 @@ export const TrackList = () => {
   const [, setSelectedTrack] = useState<Track | null>(null);
 
   if (isLoading) return <div>Loading...</div>;
+
   if (error) {
     if ('message' in error) {
       console.error('Error message:', error.message);

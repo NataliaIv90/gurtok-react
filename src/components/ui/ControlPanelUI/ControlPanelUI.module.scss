@@ -1,49 +1,49 @@
-.wrapper{
-    width: 350px;
-    margin: auto;
+.wrapper {
+  width: 350px;
+  margin: auto;
 }
 
-.buttonsWapper{
-width: 100%;
-display: flex;
-justify-content: space-between;
-margin-top: 1.5rem;
+.buttonsWapper {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1.5rem;
 }
 
 .duration {
-    margin-left: 16px;
-    font-size: 14px;
-    color: #aaa;
-  }
+  margin-left: 16px;
+  font-size: 14px;
+  color: #aaa;
+}
 
-  .progressWrapper {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-  
-  .progressBar {
-    flex: 1;
-    height: 4px;
+.progressWrapper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.progressBar {
+  flex: 1;
+  height: 4px;
+  appearance: none;
+  background: #ddd;
+  border-radius: 4px;
+  outline: none;
+
+  &::-webkit-slider-thumb {
     appearance: none;
-    background: #ddd;
-    border-radius: 4px;
-    outline: none;
-  
-    &::-webkit-slider-thumb {
-      appearance: none;
-      width: 12px;
-      height: 12px;
-      background: #333;
-      border-radius: 50%;
-      cursor: pointer;
-      margin-top: -4px;
-    }
+    width: 12px;
+    height: 12px;
+    background: #333;
+    border-radius: 50%;
+    cursor: pointer;
+    margin-top: -4px;
   }
-  
-  .time {
-    font-size: 12px;
-    color: #777;
-    min-width: 30px;
-    text-align: center;
-  }
+}
+
+.time {
+  font-size: 12px;
+  color: #777;
+  min-width: 30px;
+  text-align: center;
+}

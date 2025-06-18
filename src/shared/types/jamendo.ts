@@ -33,3 +33,65 @@ export interface JamendoTrack {
   audiodownload_allowed: boolean;
   image: string;
 }
+
+export type TPlaylist = {
+  id: number;
+  name: string;
+  description: string;
+  image: string;
+  url: string;
+};
+
+// Тип для відповіді з API плейлистів
+export interface IPlaylistsResponse {
+  results: TPlaylist[];
+}
+
+export type TCover = {
+  'tile-xs': string;
+  'tile-sm': string;
+  'hero-xs': string;
+  'hero-sm': string;
+  'hero-md': string;
+  'hero-lg': string;
+  'hero-s': string;
+  'hero-m': string;
+  'hero-l': string;
+  'hero-xl': string;
+};
+
+export type TGenre = {
+  id: number;
+  name: string;
+  lang: string;
+  idstr: string;
+  category: string;
+  featuredRank: number;
+  cover: TCover;
+};
+
+export interface IGenresResponse {
+  results: TGenre[];
+}
+
+export type TGenresList =
+  | 'blues'
+  | 'house'
+  | 'country'
+  | 'punk'
+  | 'reggae'
+  | 'rnb'
+  | 'latin'
+  | 'metal'
+  | 'folk'
+  | 'ambient'
+  | 'chillout'
+  | 'dance'
+  | 'classical'
+  | 'filmscore'
+  | 'indie'
+  | 'jazz'
+  | 'hiphop'
+  | 'electronic'
+  | 'rock'
+  | 'pop';

@@ -1,5 +1,5 @@
-import { ReactNode } from 'react';
-import { JamendoTrack } from './jamendo';
+import type { ReactNode } from 'react';
+import type { JamendoTrack } from './jamendo';
 
 export type TButton = {
   imageSrc?: string;
@@ -20,6 +20,7 @@ export type TInputProps = {
 
 export type TPlaylistProps = {
   data?: TSongItemData[];
+  playlistItem?: boolean;
 };
 
 export interface TSongItemData
@@ -31,4 +32,5 @@ export interface TSongItemData
 
 export type TSongItemProps = {
   data: TSongItemData;
+  playlistItem?: boolean;
 };

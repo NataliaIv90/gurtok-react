@@ -1,16 +1,16 @@
-import Image from 'next/image';
 import styles from './AlbumCover.module.scss';
-import defaultImage from '../../../../public/images.jpeg';
+// import defaultImage from 'images/images.jpeg';
 
 export type TAlbumCoverProps = {
   imgSrc: string;
   alt: string;
 };
 
-export const AlbumCover = ({}: TAlbumCoverProps) => {
+// export const AlbumCover = ({}: TAlbumCoverProps) => {
+export const AlbumCover = () => {
   return (
     <section className={styles.wrapper}>
-      <Image src={defaultImage} alt="" className={styles.img} />
+      <img src={''} alt="" className={styles.img} />
     </section>
   );
 };

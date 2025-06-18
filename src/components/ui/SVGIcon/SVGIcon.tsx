@@ -1,5 +1,3 @@
-import Image from 'next/image';
-
 type TIconType = 'heart' | 'list' | 'next' | 'play' | 'prev' | 'stop';
 
 interface SVGIconProps {
@@ -9,11 +7,5 @@ interface SVGIconProps {
 }
 
 export const SVGIcon = ({ name, className, alt }: SVGIconProps) => (
-  <Image
-    src={`/control-icons/${name}.svg`}
-    className={className}
-    alt={alt}
-    width={24}
-    height={24}
-  />
+  <img src={`/control-icons/${name}.svg`} className={className} alt={alt} />
 );
