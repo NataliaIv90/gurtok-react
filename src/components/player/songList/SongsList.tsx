@@ -1,14 +1,14 @@
 import { Link } from 'react-router-dom';
-import { SongItem } from '@/components';
 import type { JamendoTrack } from '@/shared/types/jamendo';
-import styles from './GenreSongsList.module.scss';
+import { SongItem } from '@/components';
+import styles from './SongsList.module.scss';
 
 interface GenreSongsListProps {
   genre: string;
   tracks: JamendoTrack[];
 }
 
-export const GenreSongsList = ({ genre, tracks }: GenreSongsListProps) => {
+export const SongsList = ({ genre, tracks }: GenreSongsListProps) => {
   if (!Array.isArray(tracks)) return <p>Wrong data type</p>;
   if (tracks.length === 0) return <p>No tracks found</p>;
 

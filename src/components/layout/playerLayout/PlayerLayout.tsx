@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useRef, useState, useCallback } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useGetTracksQuery } from '@/shared/redux/jamendoApi';
 import { ControlPanelUI, SongItem } from '@/components';
@@ -7,9 +7,9 @@ import styles from './PlayerLayout.module.scss';
 export const PlayerLayout = () => {
   const navigate = useNavigate();
   const { genre, trackIndex } = useParams<{ genre?: string; trackIndex?: string }>();
-  if (!genre) return <></>;
+  if (!genre) return null;
 
-  const index = trackIndex ? parseInt(trackIndex, 10) : 0;
+  const index = trackIndex ? Number(trackIndex) : 0;
 
   const audioRef = useRef<HTMLAudioElement>(null);
   const [currentTime, setCurrentTime] = useState(0);
@@ -23,19 +23,15 @@ export const PlayerLayout = () => {
     console.error('Error fetching tracks:', error);
     return <div>There was an error fetching the tracks</div>;
   }
-  if (!data || !Array.isArray(data.results) || data.results.length === 0) {
-    return <div>No tracks found</div>;
-  }
-  if (index < 0 || index >= data.results.length || isNaN(index)) {
+  if (!data?.results?.length) return <div>No tracks found</div>;
+  if (index < 0 || index >= data.results.length || Number.isNaN(index))
     return <div>Invalid track selected</div>;
-  }
-
-  const isNextDisabled = index + 1 >= data.results.length;
-  const isPrevDisabled = index === 0;
 
   const track = data.results[index];
+  const isNextDisabled = index >= data.results.length - 1;
+  const isPrevDisabled = index === 0;
 
-  const handleTogglePlay = () => {
+  const togglePlay = useCallback(() => {
     const audio = audioRef.current;
     if (!audio) return;
 
@@ -46,39 +42,29 @@ export const PlayerLayout = () => {
       audio.pause();
       setIsPlaying(false);
     }
-  };
+  }, []);
 
-  const handleLoadedMetadata = () => {
+  const onLoadedMetadata = useCallback(() => {
     const audio = audioRef.current;
-    if (audio) {
-      setDuration(audio.duration);
-    }
-  };
+    if (audio) setDuration(audio.duration);
+  }, []);
 
-  const handleTimeUpdate = () => {
+  const onTimeUpdate = useCallback(() => {
     const audio = audioRef.current;
-    if (audio) {
-      setCurrentTime(audio.currentTime);
-    }
-  };
+    if (audio) setCurrentTime(audio.currentTime);
+  }, []);
 
-  const handleNextTrack = () => {
-    if (!data) return;
+  const goToTrack = useCallback(
+    (newIndex: number) => {
+      if (newIndex >= 0 && newIndex < data.results.length) {
+        navigate(`/${genre}/${newIndex}`);
+      }
+    },
+    [data, genre, navigate],
+  );
 
-    const nextIndex = index + 1;
-    if (nextIndex < data.results.length) {
-      navigate(`/${genre}/${nextIndex}`);
-    }
-  };
-
-  const handlePrevTrack = () => {
-    if (!data) return;
-
-    const prevIndex = index - 1;
-    if (prevIndex >= 0) {
-      navigate(`/${genre}/${prevIndex}`);
-    }
-  };
+  const handleNextTrack = () => goToTrack(index + 1);
+  const handlePrevTrack = () => goToTrack(index - 1);
 
   return (
     <div className={styles.wrapper}>
@@ -90,18 +76,16 @@ export const PlayerLayout = () => {
           album_image: track.album_image,
         }}
       />
-
       <div>
         <audio
           ref={audioRef}
           src={track.audio}
-          onLoadedMetadata={handleLoadedMetadata}
-          onTimeUpdate={handleTimeUpdate}
+          onLoadedMetadata={onLoadedMetadata}
+          onTimeUpdate={onTimeUpdate}
           autoPlay={false}
         />
-
         <ControlPanelUI
-          onTogglePlay={handleTogglePlay}
+          onTogglePlay={togglePlay}
           playBtnContent={isPlaying ? 'pause' : 'play'}
           onNextvClick={handleNextTrack}
           nextBtnContent="next"

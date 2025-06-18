@@ -4,7 +4,7 @@ export { Button } from './ui/button/Button';
 export { Card } from './ui/card/Card';
 export { ControlPanelUI } from './layout/playerLayout/ControlPanelUI/ControlPanelUI';
 export { Genres } from './header/genres/Genres';
-export { GenreSongsList } from './songList/genreSongsList/GenreSongsList';
+export { SongsList } from './player/songList/SongsList';
 export { Input } from './ui/input/Input';
 export { Page404 } from './404page/Page404';
 export { PlayerLayout } from './layout/playerLayout/PlayerLayout';

@@ -1,9 +1,9 @@
 import { useParams } from 'react-router-dom';
 import { useGetTracksQuery } from '@/shared/redux/jamendoApi';
-import { GenreSongsList, PlayerLayout } from '@/components';
-import styles from './SongList.module.scss';
+import { SongsList, PlayerLayout } from '@/components';
+import styles from './Player.module.scss';
 
-export const GenreSongsPage = () => {
+export const Player = () => {
   const { genre, trackIndex } = useParams<{ genre?: string; trackIndex?: string }>();
 
   if (!genre) {
@@ -18,7 +18,7 @@ export const GenreSongsPage = () => {
   return (
     <div className={styles.wrapper}>
       <div>{trackIndex !== undefined ? <PlayerLayout /> : <div>Оберіть пісню</div>}</div>
-      <GenreSongsList genre={genre} tracks={data.results} />
+      <SongsList genre={genre} tracks={data.results} />
     </div>
   );
 };
