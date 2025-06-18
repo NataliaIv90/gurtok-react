@@ -1,13 +1,12 @@
 export { App } from './app/App';
-export { AuthForm } from './ui/authForm/AuthForm';
+export { AuthForm } from './forms/authFormLayout/authForm/AuthForm';
 export { Button } from './ui/button/Button';
-export { Card } from './ui/card/Card';
-export { ControlPanelUI } from './layout/playerLayout/ControlPanelUI/ControlPanelUI';
+export { ControlPanelUI } from './player/playerLayout/ControlPanelUI/ControlPanelUI';
 export { Genres } from './header/genres/Genres';
 export { SongsList } from './player/songList/SongsList';
 export { Input } from './ui/input/Input';
 export { Page404 } from './404page/Page404';
-export { PlayerLayout } from './layout/playerLayout/PlayerLayout';
-export { RegistrationForm } from './ui/registrationForm/RegistrationForm';
+export { PlayerLayout } from './player/playerLayout/PlayerLayout';
+export { RegistrationForm } from './forms/registrationForm/RegistrationForm';
 export { SongItem } from './ui/songItem/SongItem';
 export { SVGIcon } from './ui/SVGIcon/SVGIcon';
