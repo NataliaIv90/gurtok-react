@@ -6,7 +6,6 @@ import styles from './SongList.module.scss';
 export const GenreSongsPage = () => {
   const { genre, trackIndex } = useParams<{ genre?: string; trackIndex?: string }>();
 
-  console.log(genre);
   if (!genre) {
     return <div>Оберіть жанр</div>;
   }

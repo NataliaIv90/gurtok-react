@@ -4,7 +4,6 @@ import { useGetTracksQuery } from '@/shared/redux/jamendoApi';
 import { ControlPanelUI, SongItem } from '@/components';
 import styles from './PlayerLayout.module.scss';
 
-
 export const PlayerLayout = () => {
   const navigate = useNavigate();
   const { genre, trackIndex } = useParams<{ genre?: string; trackIndex?: string }>();
@@ -19,7 +18,7 @@ export const PlayerLayout = () => {
 
   const { data, error, isLoading } = useGetTracksQuery({ genre });
 
-   if (isLoading) return <div>Loading...</div>;
+  if (isLoading) return <div>Loading...</div>;
   if (error) {
     console.error('Error fetching tracks:', error);
     return <div>There was an error fetching the tracks</div>;
@@ -32,7 +31,7 @@ export const PlayerLayout = () => {
   }
 
   const isNextDisabled = index + 1 >= data.results.length;
-const isPrevDisabled = index === 0;
+  const isPrevDisabled = index === 0;
 
   const track = data.results[index];
 
@@ -64,22 +63,22 @@ const isPrevDisabled = index === 0;
   };
 
   const handleNextTrack = () => {
-  if (!data) return;
+    if (!data) return;
 
-  const nextIndex = index + 1;
-  if (nextIndex < data.results.length) {
-    navigate(`/${genre}/${nextIndex}`);
-  }
-};
+    const nextIndex = index + 1;
+    if (nextIndex < data.results.length) {
+      navigate(`/${genre}/${nextIndex}`);
+    }
+  };
 
-const handlePrevTrack = () => {
-  if (!data) return;
+  const handlePrevTrack = () => {
+    if (!data) return;
 
-  const prevIndex = index - 1;
-  if (prevIndex >= 0) {
-    navigate(`/${genre}/${prevIndex}`);
-  }
-};
+    const prevIndex = index - 1;
+    if (prevIndex >= 0) {
+      navigate(`/${genre}/${prevIndex}`);
+    }
+  };
 
   return (
     <div className={styles.wrapper}>
@@ -101,19 +100,19 @@ const handlePrevTrack = () => {
           autoPlay={false}
         />
 
-<ControlPanelUI
-  onTogglePlay={handleTogglePlay}
-  playBtnContent={isPlaying ? 'pause' : 'play'}
-  onNextvClick={handleNextTrack}
-  nextBtnContent="next"
-  onPrevClick={handlePrevTrack}
-  prevBtnContent="prev"
-  duration={duration}
-  currentTime={currentTime}
-  isNextDisabled={isNextDisabled}
-  isPrevDisabled={isPrevDisabled}
-  isPlaying={isPlaying}
-/>
+        <ControlPanelUI
+          onTogglePlay={handleTogglePlay}
+          playBtnContent={isPlaying ? 'pause' : 'play'}
+          onNextvClick={handleNextTrack}
+          nextBtnContent="next"
+          onPrevClick={handlePrevTrack}
+          prevBtnContent="prev"
+          duration={duration}
+          currentTime={currentTime}
+          isNextDisabled={isNextDisabled}
+          isPrevDisabled={isPrevDisabled}
+          isPlaying={isPlaying}
+        />
       </div>
     </div>
   );

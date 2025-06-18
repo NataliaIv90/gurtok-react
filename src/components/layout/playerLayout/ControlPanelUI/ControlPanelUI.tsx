@@ -35,26 +35,26 @@ export const ControlPanelUI = ({
   isPrevDisabled,
   isPlaying,
 }: TControlPanelProps) => {
-const buttons: ButtonConfig[] = [
-  {
-    content: prevBtnContent,
-    onClick: onPrevClick,
-    key: 'prev',
-    disabled: isPrevDisabled,
-  },
-  {
-    content: isPlaying? 'stop':'play',
-    onClick: onTogglePlay,
-    key: 'play',
-    disabled: false,
-  },
-  {
-    content: nextBtnContent,
-    onClick: onNextvClick,
-    key: 'next',
-    disabled: isNextDisabled,
-  },
-];
+  const buttons: ButtonConfig[] = [
+    {
+      content: prevBtnContent,
+      onClick: onPrevClick,
+      key: 'prev',
+      disabled: isPrevDisabled,
+    },
+    {
+      content: isPlaying ? 'stop' : 'play',
+      onClick: onTogglePlay,
+      key: 'play',
+      disabled: false,
+    },
+    {
+      content: nextBtnContent,
+      onClick: onNextvClick,
+      key: 'next',
+      disabled: isNextDisabled,
+    },
+  ];
 
   return (
     <section className={styles.wrapper}>
