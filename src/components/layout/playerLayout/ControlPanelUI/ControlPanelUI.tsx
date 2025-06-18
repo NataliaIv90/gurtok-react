@@ -1,6 +1,6 @@
 import { Button, SVGIcon } from '@/components';
-import styles from './ControlPanelUI.module.scss';
 import type { TIconType } from '@/components/ui/SVGIcon/SVGIcon';
+import styles from './ControlPanelUI.module.scss';
 
 export type TControlPanelProps = {
   onTogglePlay: () => void;
@@ -11,6 +11,9 @@ export type TControlPanelProps = {
   prevBtnContent: string;
   duration: number;
   currentTime: number;
+  isNextDisabled: boolean;
+  isPrevDisabled: boolean;
+  isPlaying: boolean;
 };
 
 type ButtonConfig = {
@@ -22,34 +25,36 @@ type ButtonConfig = {
 
 export const ControlPanelUI = ({
   onTogglePlay,
-  playBtnContent,
   onNextvClick,
   nextBtnContent,
   onPrevClick,
   prevBtnContent,
   duration,
   currentTime,
+  isNextDisabled,
+  isPrevDisabled,
+  isPlaying,
 }: TControlPanelProps) => {
-  const buttons: ButtonConfig[] = [
-    {
-      content: prevBtnContent,
-      onClick: onPrevClick,
-      key: 'prev',
-      disabled: true,
-    },
-    {
-      content: playBtnContent,
-      onClick: onTogglePlay,
-      key: 'play',
-      disabled: false,
-    },
-    {
-      content: nextBtnContent,
-      onClick: onNextvClick,
-      key: 'next',
-      disabled: true,
-    },
-  ];
+const buttons: ButtonConfig[] = [
+  {
+    content: prevBtnContent,
+    onClick: onPrevClick,
+    key: 'prev',
+    disabled: isPrevDisabled,
+  },
+  {
+    content: isPlaying? 'stop':'play',
+    onClick: onTogglePlay,
+    key: 'play',
+    disabled: false,
+  },
+  {
+    content: nextBtnContent,
+    onClick: onNextvClick,
+    key: 'next',
+    disabled: isNextDisabled,
+  },
+];
 
   return (
     <section className={styles.wrapper}>

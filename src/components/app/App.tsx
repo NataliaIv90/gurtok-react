@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Page404 } from '@/components';
-import { GenreSongsPage } from '../genreSongsPage/GenresSongsPage';
+import { GenreSongsPage } from '../songList/GenresSongsPage';
 import { Header } from '../header/Header';
 
 export const App = () => {

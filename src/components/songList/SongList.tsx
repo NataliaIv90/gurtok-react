@@ -1,7 +1,8 @@
 import { useParams } from 'react-router-dom';
 import { useGetTracksQuery } from '@/shared/redux/jamendoApi';
 import { GenreSongsList, PlayerLayout } from '@/components';
-import styles from './GenresSongsPage.module.scss';
+import styles from './SongList.module.scss';
+
 export const GenreSongsPage = () => {
   const { genre, trackIndex } = useParams<{ genre?: string; trackIndex?: string }>();
 
