@@ -1,4 +1,4 @@
-type TIconType = 'heart' | 'list' | 'next' | 'play' | 'prev' | 'stop';
+export type TIconType = 'heart' | 'list' | 'next' | 'play' | 'prev' | 'stop';
 
 interface SVGIconProps {
   name: TIconType;
@@ -7,5 +7,5 @@ interface SVGIconProps {
 }
 
 export const SVGIcon = ({ name, className, alt }: SVGIconProps) => (
-  <img src={`/control-icons/${name}.svg`} className={className} alt={alt} />
+  <img src={`/images/control-icons/${name}.svg`} className={className} alt={alt} />
 );

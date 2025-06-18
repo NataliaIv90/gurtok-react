@@ -1,16 +1,17 @@
-import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
-import { Genres, Page404 } from '@/components';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { Page404 } from '@/components';
+import { GenreSongsPage } from '../genreSongsPage/GenresSongsPage';
+import { Header } from '../header/Header';
 
 export const App = () => {
   return (
     <BrowserRouter>
-      <nav style={{ display: 'flex', gap: '10px' }}>
-        <Link to="/">Home</Link>
-        <Link to="/about">About</Link>
-      </nav>
+      <Header />
 
       <Routes>
-        <Route path="/" element={<Genres />} />
+        <Route path="/" element={<div>Оберіть жанр</div>} />
+        <Route path="/:genre" element={<GenreSongsPage />} />
+        <Route path="/:genre/:trackIndex" element={<GenreSongsPage />} />
         <Route path="*" element={<Page404 />} />
       </Routes>
     </BrowserRouter>

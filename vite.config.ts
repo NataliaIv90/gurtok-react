@@ -18,4 +18,11 @@ export default defineConfig({
       '@/utils': path.resolve(__dirname, './src/shared/utils'),
     },
   },
+  css: {
+    preprocessorOptions: {
+      scss: {
+        additionalData: `@use "@/styles/main.scss" as *;`,
+      },
+    },
+  },
 });

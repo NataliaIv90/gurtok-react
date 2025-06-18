@@ -1,25 +1,20 @@
-import { ReactNode } from 'react';
-import { Button } from '@/components';
+import { Button, SVGIcon } from '@/components';
 import styles from './ControlPanelUI.module.scss';
+import type { TIconType } from '@/components/ui/SVGIcon/SVGIcon';
 
 export type TControlPanelProps = {
   onTogglePlay: () => void;
-  playBtnContent: string | ReactNode;
+  playBtnContent: string;
   onNextvClick: () => void;
-  nextBtnContent: string | ReactNode;
+  nextBtnContent: string;
   onPrevClick: () => void;
-  prevBtnContent: string | ReactNode;
-  onLikeBtnClick: () => void;
-  likeBtnContent: string | ReactNode;
-  onGoToListBtnClick: () => void;
-  goToListContent: string | ReactNode;
-  stopBtnContent: string | ReactNode;
+  prevBtnContent: string;
   duration: number;
   currentTime: number;
 };
 
 type ButtonConfig = {
-  content: string | ReactNode;
+  content: string;
   onClick: () => void;
   key: string;
   disabled: boolean;
@@ -32,23 +27,10 @@ export const ControlPanelUI = ({
   nextBtnContent,
   onPrevClick,
   prevBtnContent,
-  onLikeBtnClick,
-  likeBtnContent,
-  onGoToListBtnClick,
-  goToListContent,
   duration,
   currentTime,
-  // stopBtnContent,
 }: TControlPanelProps) => {
-  // const isPlaying = false;
-
   const buttons: ButtonConfig[] = [
-    {
-      content: goToListContent,
-      onClick: onGoToListBtnClick,
-      key: 'list',
-      disabled: true,
-    },
     {
       content: prevBtnContent,
       onClick: onPrevClick,
@@ -65,12 +47,6 @@ export const ControlPanelUI = ({
       content: nextBtnContent,
       onClick: onNextvClick,
       key: 'next',
-      disabled: true,
-    },
-    {
-      content: likeBtnContent,
-      onClick: onLikeBtnClick,
-      key: 'like',
       disabled: true,
     },
   ];
@@ -105,7 +81,7 @@ export const ControlPanelUI = ({
       <div className={styles.buttonsWapper}>
         {buttons.map(({ content, onClick, key, disabled }) => (
           <Button key={key} onClick={onClick} disabled={disabled}>
-            {content}
+            <SVGIcon name={content as TIconType} alt={`${content} icon`} className={styles.icon} />
           </Button>
         ))}
       </div>

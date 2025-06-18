@@ -1,16 +1,18 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import type { IGenresResponse, IPlaylistsResponse, JamendoResponse } from '../types/jamendo';
 
+const clientId = import.meta.env.VITE_CLIENT_ID;
+const clientSecret = import.meta.env.VITE_CLIENT_SECRET;
+
 export const jamendoApi = createApi({
   reducerPath: 'jamendoApi',
   baseQuery: fetchBaseQuery({ baseUrl: 'https://api.jamendo.com/v3.0/' }),
   endpoints: (builder) => ({
     getTracks: builder.query<JamendoResponse, Record<string, string>>({
-      query: (params) =>
-        `tracks/?client_id=${process.env.NEXT_PUBLIC_CLIENT_ID}&${new URLSearchParams(params)}`,
+      query: ({ genre }) => `tracks/?client_id=${clientId}&format=json&limit=20&tags=${genre}`,
     }),
     getPlaylists: builder.query<IPlaylistsResponse, void>({
-      query: () => `playlists/?client_id=${process.env.NEXT_PUBLIC_CLIENT_ID}`,
+      query: () => `playlists/?client_id=${clientSecret}`,
     }),
     getGenres: builder.query<IGenresResponse, void>({
       query: () =>

@@ -1,11 +1,16 @@
 .wrapper {
   margin: 0 auto;
-  height: 800px;
-  width: 600px;
-  display: grid;
-  grid-template-rows: 1fr 5fr 1.5fr;
-  align-self: center;
+  width: 100%;
   text-align: center;
-  max-width: 100vw;
-  padding: 4rem;
+  padding: 1rem;
+  position: fixed;
+  top: 150px;
+  // width: inherit;
+  width:45%;
+
+      display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: -webkit-fill-available;
+    padding: 3rem 0;
 }

@@ -1,6 +1,5 @@
 import type { TSongItemProps } from '@/shared/types/components';
 import styles from './SongItem.module.scss';
-import { Button } from '../button/Button';
 
 export const SongItem = ({ data, playlistItem }: TSongItemProps) => {
   const { id, album_image, artist_name, name } = data;
@@ -11,15 +10,11 @@ export const SongItem = ({ data, playlistItem }: TSongItemProps) => {
         <img src={album_image} alt={`${name} cover`} className={styles.image} />
       </div>
       <div className={styles.info}>
-        <p className={styles.songName}>{name}</p>
+        <p className={styles.songName} title={name}>
+          {name}
+        </p>
         <p className={styles.artist}>{artist_name}</p>
       </div>
-
-      {playlistItem ? (
-        <Button onClick={() => {}} className={styles.button}>
-          Play
-        </Button>
-      ) : null}
     </section>
   );
 };

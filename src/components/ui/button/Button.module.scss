@@ -17,7 +17,7 @@
 
   box-shadow: 4px 4px 0 var(--text);
 
-  &:hover {
+  &:hover :not:disabled {
     top: 1px;
     left: 1px;
     box-shadow: 3px 3px 0 var(--text);

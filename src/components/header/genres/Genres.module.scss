@@ -1,11 +1,12 @@
 .wrapper {
   display: flex;
-  flex-wrap: wrap;
+  // flex-wrap: wrap;
   gap: 12px;
-  justify-content: center;
-  margin: 2rem auto;
+  justify-content: flex-start;
+  margin: 1rem auto;
   padding: 1rem;
-  max-width: 900px;
+  // max-width: 90%;
+  overflow: auto;
 }
 
 .header {
@@ -14,4 +15,8 @@
   font-size: 2rem;
   font-weight: 600;
   color: #333;
+}
+
+.selected{
+  background: $primary-light;
 }

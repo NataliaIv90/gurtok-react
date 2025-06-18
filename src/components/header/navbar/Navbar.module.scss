@@ -1,0 +1,31 @@
+.header-wrapper {
+  display: flex;
+  gap: 10px;
+}
+
+.nav-link {
+  position: relative;
+  text-decoration: none;
+  color: $text-light;
+  padding: 4px 0;
+  transition: color 0.3s;
+
+  &::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    width: 0;
+    height: 2px;
+    background: $highlight-light;
+    transition: all 0.4s ease;
+    transform: translateX(-50%);
+  }
+
+  &.active {
+    color: $highlight-light;
+    &::after {
+      width: 100%;
+    }
+  }
+}
